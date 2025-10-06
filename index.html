@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Bangers&family=Lexend+Deca:wght@100..900&family=Rubik+Distressed&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  
+  <h1 id="heading">ToDo App</h1>
+
+  <div id="task-input">
+    <label>What is on your mind?</label>
+    <br>
+    <input id="newTaskField" type="text" placeholder="Add your task here!">
+    <button class="save">submit</button>
+  </div>
+
+  <div id="activeList">
+    <h2>Current Tasks:</h2>
+    <div id="currentTasks">
+
+    </div>
+  </div>
+
+
+
+  <h3>Do you want to remove a task?</h3>
+  <div id="task-remove">
+    <input id="removeTaskField" type="text" placeholder="Task to remove?">
+    <button class="delete">remove</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
