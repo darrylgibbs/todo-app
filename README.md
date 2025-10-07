@@ -1,4 +1,4 @@
-## v1!!!!!!!!!!
+## v1 Release!!
 
 This is my first app of my own design and creation.  
 
