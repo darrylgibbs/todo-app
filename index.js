@@ -10,22 +10,8 @@ document.querySelector(".save").addEventListener("click", function () {
     taskList.push(newTask);
     console.log(taskList);
 
-
     // show updated array: taskList
-
-    // this requires a loop to run through the taskList and print each item on a new line, maybe with a <li> before it
-    let numberOfTasks = taskList.length;
-    let outputList = "";
-
-    for (i = 0; i < numberOfTasks; i++) {
-       outputList += i + ". " + taskList[i] + "<br>";
-        
-       document.getElementById("currentTasks").innerHTML = outputList
-        //document.getElementById("currentTasks").innerHTML = taskList.join("<br>");
-    }
-
-            // let text = taskList.toString();
-            // document.getElementById("currentTasks").innerHTML = text;
+    updateList();
 
     // clear input for next task
     document.getElementById("newTaskField").value = "";
@@ -35,30 +21,28 @@ document.querySelector(".save").addEventListener("click", function () {
 // Removing a task from the list
 document.querySelector(".delete").addEventListener("click", function () {
     // select input by ID & retrieve VALUE of the input field
-
     let deadTask = document.getElementById("removeTaskField").value;
 
     let taskRemove = taskList.indexOf(deadTask);
     if (taskRemove > -1) {
         taskList.splice(taskRemove, 1);
-    }
-    
-
-    
+    }   
     console.log(taskList);
 
-    // // this requires a loop to run through the taskList and print each item on a new line, maybe with a <li> before it
-    // let numberOfTasks = taskList.length;
-    // let outputList = "";
-
-    for (i = 0; i < numberOfTasks; i++) {
-       outputList += i + ". " + taskList[i] + "<br>";
-        
-       document.getElementById("currentTasks").innerHTML = outputList
-        //document.getElementById("currentTasks").innerHTML = taskList.join("<br>");
-    }
+    // show updated array: taskList
+    updateList();
 
     document.getElementById("removeTaskField").value = "";
 });
 
-// NEED A SEPERATE FUNCTION FOR UPDATING LIST!!!!
+// Update tasklist with changes
+function updateList() {
+    // this requires a loop to run through the taskList and print each item on a new line, maybe with a <li> before it
+    let numberOfTasks = taskList.length;
+    let outputList = "";
+
+    for (i = 0; i < numberOfTasks; i++) {
+       outputList += i + ". " + taskList[i] + "<br>";
+       document.getElementById("currentTasks").innerHTML = outputList
+    }
+}
