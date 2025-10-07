@@ -28,6 +28,12 @@ h3 {
   margin-top: 50px;;
 }
 
+.github {
+  margin-top: 50px;
+  height:auto;
+  width: 3rem;
+}
+
 /* #task-input {
 
 }
