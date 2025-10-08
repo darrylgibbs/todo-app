@@ -42,7 +42,7 @@ function updateList() {
     let outputList = "";
 
     for (i = 0; i < numberOfTasks; i++) {
-       outputList += i + ". " + taskList[i] + "<br>";
+       outputList += i+1 + ". " + taskList[i] + "<br>"; // start the count from TASK #1 not #0.
        document.getElementById("currentTasks").innerHTML = outputList
     }
 }
