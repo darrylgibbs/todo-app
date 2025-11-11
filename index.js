@@ -1,38 +1,78 @@
 // Task list that grows
 let taskList = [];
 
-// Add a task to the list list when hitting SUBMIT
-document.querySelector(".save").addEventListener("click", function () {
+// shortened code
+const saveButton = document.querySelector(".save");
+const newInputField = document.getElementById("newTaskField");
+const deleteButton = document.querySelector(".delete");
+const deleteField = document.getElementById("removeTaskField");
+
+// Save new task
+function handleSave() {
     // select input by ID & retrieve VALUE of the input field
-    let newTask = document.getElementById("newTaskField").value;
+    let newTask = newInputField.value.trim();
 
-    // add newTaskValue to array
-    taskList.push(newTask);
-    console.log(taskList);
-
-    // show updated array: taskList
-    updateList();
-
-    // clear input for next task
-    document.getElementById("newTaskField").value = "";
+    // check for empty field
+    if (newTask === "") {
+        alert("Task field cannot be empty!");
+        return; // stop the function here
+    } else {
+        // add newTaskValue to array
+        taskList.push(newTask);
+        console.log(taskList);
     
+        // show updated array: taskList
+        updateList();
+    }
+    
+    // clear input field for new task
+    newInputField.value = "";
+}
+
+// Handle button click
+saveButton.addEventListener("click", handleSave);
+
+// Handle pressing Enter in input
+newInputField.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        handleSave();
+    }
 });
 
-// Removing a task from the list
-document.querySelector(".delete").addEventListener("click", function () {
+// Delete task
+function handleDelete() {
     // select input by ID & retrieve VALUE of the input field
-    let deadTask = document.getElementById("removeTaskField").value;
+    let deadTask = deleteField.value.trim();
 
-    let taskRemove = taskList.indexOf(deadTask);
-    if (taskRemove > -1) {
+    // check for empty field
+    if (taskList.includes(deadTask) !== true || deadTask === "") {
+        alert("Please enter a task that is currently on the list.");
+        deleteField.value = ""; // clear input field for new task
+        return; // stop the function here
+  
+    } else { // remove entered task
+        let taskRemove = taskList.indexOf(deadTask);
+        if (taskRemove > -1) {
         taskList.splice(taskRemove, 1);
-    }   
-    console.log(taskList);
+        }   
+        console.log(taskList);
+    
+        // show updated array: taskList
+        updateList();
+    }
 
-    // show updated array: taskList
-    updateList();
+    // clear input field for new task
+    deleteField.value = "";
+}
 
-    document.getElementById("removeTaskField").value = "";
+// Handle button click
+deleteButton.addEventListener("click", handleDelete);
+
+// Handle pressing Enter in input
+deleteField.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        handleDelete();
+    }
 });
 
 // Update tasklist with changes
