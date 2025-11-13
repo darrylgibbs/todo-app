@@ -82,8 +82,12 @@ function updateList() {
     let numberOfTasks = taskList.length;
     let outputList = "";
 
-    for (i = 0; i < numberOfTasks; i++) {
+    if (numberOfTasks === 0) {
         currentTasks.innerHTML = outputList
-        outputList += i+1 + ". " + taskList[i] + "<br>"; // start the count from TASK #1 not #0.
+    } else {
+        for (i = 0; i < numberOfTasks; i++) { // bug: when clearing the task list, numberOfTasks = 0 creating a logic error. The list is never updated.
+            outputList += i+1 + ". " + taskList[i] + "<br>"; // start the count from TASK #1 not #0.
+            currentTasks.innerHTML = outputList
+        }
     }
 }
